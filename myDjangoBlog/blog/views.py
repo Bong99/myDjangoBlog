@@ -5,9 +5,12 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+def post_list(request, page_id):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')[page_id*3+0:page_id*3+3]
+    #posts = posts_all[page_id*3+0:page_id*3+3]
+    page_id_next = page_id + 1
+    page_id_prev = page_id - 1
+    return render(request, 'blog/post_list.html', {'posts': posts, 'page_id_next':page_id_next, 'page_id_prev':page_id_prev})
 
 def detail(request, post_id):
     #return HttpResponse("You are reading the detail of post %s" % post_id)

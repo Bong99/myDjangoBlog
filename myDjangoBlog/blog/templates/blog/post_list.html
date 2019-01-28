@@ -1,7 +1,19 @@
 <html>
   <head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131243065-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-131243065-1');
+    </script>
+
     <title>myDjangoBlog</title>
   </head>
+
+
   <body>
     {% for post in posts %}
       <div>
@@ -10,6 +22,14 @@
         <p>{{ post.subtitle }}</p>
       </div>
     {% endfor %}
+
+    {% if page_id_next != 1 %}
+        <a href="../{{page_id_prev}}">Previous</a>
+    {% endif %}
+
+    <a href="../{{page_id_next}}">Next</a>
+
+
 
 
 
