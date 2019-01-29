@@ -27,8 +27,9 @@
         <a href="../{{page_id_prev}}">Previous</a>
     {% endif %}
 
-    <a href="../{{page_id_next}}">Next</a>
-
+    {% if page_id_next != 0 %}
+        <a href="../{{page_id_next}}">Next</a>
+    {% endif %}
 
 
 
